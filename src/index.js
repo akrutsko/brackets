@@ -1,10 +1,8 @@
 module.exports = function check(str, bracketsConfig) {
-  let brackets = [];
-  bracketsConfig.forEach(bracket => brackets.push(bracket.join('')));
-
-  let bracket;
+  const brackets = bracketsConfig.map(bracket => bracket.join(''));
   const hasBracket = (str, brackets) => brackets.find(bracket => str.includes(bracket));
 
+  let bracket;
   while (bracket = hasBracket(str, brackets)) {
     str = str.replaceAll(bracket, '');
   }
